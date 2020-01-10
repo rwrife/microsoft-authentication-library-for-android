@@ -854,6 +854,14 @@ public class PublicClientApplication implements IPublicClientApplication, IToken
 
         final OperationParameters params = OperationParametersAdapter.createOperationParameters(config, config.getOAuth2TokenCache());
 
+        if (clientId != null && params != null) {
+            params.setClientId(clientId);
+        }
+
+        if (authority != null && params != null) {
+            params.setAuthority(authority);
+        }
+
         final BaseController controller;
         try {
             controller = MSALControllerFactory.getDefaultController(
